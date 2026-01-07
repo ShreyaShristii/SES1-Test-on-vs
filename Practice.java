@@ -11,7 +11,9 @@ class Practice {
         System.out.print("\nAll numbers in reversed order \n");
         Reversed(8,1);
         System.out.print("\nFactorial of 8 \n"+Fact(8));
-        // System.out.println("Sum of all digits of 348 "+Dsum(348));
+        System.out.print("\nSum of all digits of 348 "+Dsum(348));
+        System.out.println("\nNumer of digits in 93825524 is "+Ndigit(93825524,0));
+        System.out.println("\n Power(4,4) is "+Power(4,4));
     }
     public static int Sum(int n){
         if(n==0) return 0;
@@ -39,5 +41,24 @@ class Practice {
     public static int Fact(int n){
         if(n==0)return 1;
         return n*Fact(n-1);
+    }
+    public static int Dsum(int n){
+        if(n==0)return 0;
+        return Dsum(n/10)+n%10;
+    }
+    public static int Ndigit(int n,int c){
+        if(n==0)return 0;
+        while(n>=1){
+            c++;
+            n/=10;
+        }
+        return c;
+    }
+    public static int Power(int a,int n){
+        if(n==0)return 1;
+        while(n!=0){
+            n-=1;
+            return Power(a,n)*a;
+        }return 1;
     }
 }
