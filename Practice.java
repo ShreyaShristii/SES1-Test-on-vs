@@ -12,8 +12,12 @@ class Practice {
         Reversed(8,1);
         System.out.print("\nFactorial of 8 \n"+Fact(8));
         System.out.print("\nSum of all digits of 348 "+Dsum(348));
-        System.out.println("\nNumer of digits in 93825524 is "+Ndigit(93825524,0));
+        System.out.println("\nNumer of digits in 93825524 is "+Ndigit(93825524));
         System.out.println("\n Power(4,4) is "+Power(4,4));
+        System.out.println("Reversed of 7842 is "+reverseD(7842,0));
+        System.out.println(checkPalin(11131));
+        int[] a={2,32,3,10,11,-232};
+        System.out.println("Sum of The given elements of array is: "+arraySum(a,0,0));
     }
     public static int Sum(int n){
         if(n==0) return 0;
@@ -46,19 +50,30 @@ class Practice {
         if(n==0)return 0;
         return Dsum(n/10)+n%10;
     }
-    public static int Ndigit(int n,int c){
-        if(n==0)return 0;
-        while(n>=1){
-            c++;
-            n/=10;
-        }
-        return c;
+    public static int Ndigit(int n){
+        if(n<10)return 1;
+        // while(n>=1){
+        //     c++;
+        //     n/=10;
+        // }
+        return Ndigit(n/10)+1;
     }
     public static int Power(int a,int n){
         if(n==0)return 1;
-        while(n!=0){
-            n-=1;
-            return Power(a,n)*a;
-        }return 1;
+        return a*Power(a,n-1);
+    }
+    public static int reverseD(int n,int r){
+        if(n==0) return r;
+        int d=n%10;
+        r=r*10+d;
+        return reverseD(n/10,r);
+    }
+    public static boolean checkPalin(int n){
+        if(n==reverseD(n,0)) return true;
+        return false;
+    }
+    public static int arraySum(int[] a,int n,int s){
+        if(n==a.length)return s;
+        return s+a[n]+arraySum(a,++n,s); 
     }
 }
